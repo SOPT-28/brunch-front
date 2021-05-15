@@ -2,7 +2,7 @@
     "extends": ["react-app", "plugin:prettier/recommanded"],
     "editor.formatOnSave": true,
     "[javascript]": {
-        "editor.formatOnSave": false
+        "editor.formatOnSave": true
     },
     "eslint.autoFixOnSave": true,
     "eslint.alwaysShowStatus": true,

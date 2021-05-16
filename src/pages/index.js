@@ -1,2 +1,2 @@
-export { default as Main } from "./Main";
-export { default as Search } from './Search'
+export { default as MainPage } from './MainPage';
+export { default as SearchPage } from './SearchPage';

@@ -125,5 +125,5 @@ const MainWrap = styled.div`
 
 4. prettier 설정 변경시엔 개발 톡방에 이야기하고 변경할 것
 
-    [https://prettier.io/docs/en/options.html](https://prettier.io/docs/en/options.html)
+    [prettier 옵션 list](https://prettier.io/docs/en/options.html)
 

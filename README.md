@@ -1,7 +1,5 @@
 # Brunch - Front
 
----
-
 - React.js
 - Styled-components
 - create-react-app
@@ -107,3 +105,25 @@ const MainWrap = styled.div`
 `
 // 다음과 같은 방법으로 반응형을 구현한다.
 ```
+
+## ESlint + Prettier 설정
+
+1. eslint + prettier vscode extension 설치
+2. setting.json (`command + ,`) 에서 `formatOnSave: true` 체크 하거나 직접 수정
+
+    ```jsx
+    "editor.formatOnSave": true,
+    ```
+
+3. 다음과 같은 플러그인 devDependency로 설치
+
+    ```jsx
+    yarn add -D eslint-config-prettier eslint-plugin-prettier prettier
+    // eslint-config-prettier : ESLint와 Prettier에 중복되는 Formatting 룰 삭제
+    // eslint-plugin-prettier : ESLint에 Prettier의 Formatting 기능 추가
+    ```
+
+4. prettier 설정 변경시엔 개발 톡방에 이야기하고 변경할 것
+
+    [https://prettier.io/docs/en/options.html](https://prettier.io/docs/en/options.html)
+

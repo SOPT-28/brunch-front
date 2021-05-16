@@ -1,15 +1,19 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Main, Search } from "./pages";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { MainPage, SearchPage } from './pages';
+import { Footer } from './components';
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/search" component={Search} />
-        <Route path="/">404 not Found</Route>
-      </Switch>
-    </Router>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/search" component={SearchPage} />
+          <Route path="/">404 not Found</Route>
+        </Switch>
+      </Router>
+      <Footer />
+    </>
   );
 };
 

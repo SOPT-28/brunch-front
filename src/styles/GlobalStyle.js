@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 export default createGlobalStyle`
     ${reset};
@@ -7,7 +7,6 @@ export default createGlobalStyle`
     body{
         font-size: 10px;
         font-family: 'Spoqa Han Sans Neo','sans-serif';
-        letter-spacing: -0.02em;
     }
 
     * {

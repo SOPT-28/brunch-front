@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Brunch - Front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+- React.js
+- Styled-components
+- create-react-app
 
-In the project directory, you can run:
+## How to Run
 
-### `yarn start`
+### **App 실행**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- local, dev
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```css
+yarn start
+```
 
-### `yarn test`
+## **Basic rules**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **package install**
 
-### `yarn build`
+`yarn` 을 사용하여 install 하기 때문에 `npm install` 을 사용하는 것을 **금지**한다
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Code Convention**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Dir 구조**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```tsx
+brunch-front             
+├─ public                
+│  └─ index.html         
+├─ src                   
+│  ├─ assets // svg 파일들은 모두 assets/index.js 에 default로 선언해준다.             
+│  │  └─ index.js               
+│  ├─ components // 도메인이나 역할 분류에 따라 디렉토리 생성         
+│  │  ├─ common // 디렉토리는 lower Camel Case, 컴포넌트는 Upper Camel Case          
+│  │  │  ├─ Footer.js    
+│  │  │  └─ Header.js    
+│  │  ├─ main            
+│  │  ├─ search          
+│  │  └─ index.js        
+│  ├─ pages // 라우터 구조에 따라 생성, 하위 컴포넌트 이름은 Page라는 접미어를 붙인다.            
+│  │  ├─ Main.js         
+│  │  ├─ Search.js       
+│  │  └─ index.js        
+│  ├─ styles // style 관련된 내용             
+│  │  ├─ GlobalStyle.js  
+│  │  └─ theme.js        
+│  ├─ App.js // App.js에는 라우팅 경로를 작성한다. 로직이 되는 별도의 코드는 작성 금지           
+│  └─ index.js // index.js는 Context Provider로서만 작동하도록 한다.
+├─ README.md             
+├─ package.json                
+└─ yarn.lock
+```
 
-### `yarn eject`
+## Git Commit
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### **Types**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **feat:** 새로운 기능 추가
+- **fix:** 버그 수정
+- **docs:** 도큐멘테이션 변경
+- **style:** 코드에 지장 없는 스타일 변경(공백, 세미콜론 추가, etc)
+- **refactor:** 기능적으로나 버그를 수정한 리펙토링
+- **perf:** 퍼포먼스 향상을 위한 코드 추가
+- **test:** 테스트코드 추가
+- **chore:** 빌드 프로세스 또는 도큐먼트 생성과 같은 툴 및 라이브러리 변경
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### **Example**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### **쇼핑(아이템 선택, 장바구니 담기 등) app을 개발한다고 가정,**
 
-## Learn More
+- **feat:** 장바구니에 아이템 담기 기능 추가
+- **fix:** 장바구니에 아이템이 안담기는 버그 수정
+- **docs:** 프로젝트 readme.md 변경 등
+- **style:** 코드에 세미콜론을 빼먹음, 연산자 사이에 공백 추가 등
+- **refactor:** 장바구니 담기 코드가 비효율적이어서 효율적인 코드로 변경(내부적으로 변경, 외부적으론 차이가 없음)
+- **perf:** 장바구니 담기는 속도가 너무 느려서 최적화 등
+- **test:** 장바구니에 잘 담기는지에 대한 테스트 코드 작성
+- **chore:** redux를 mobx로 교체 등
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Style Guide
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **size 단위 규칙**
 
-### Code Splitting
+- 모든 size 단위는 rem만 사용한다. root(`GlobalStyle.js`)에 `font-size: 10px`을 지정하여, 소수점 한자리를 당겨서 사용한다. 가령, `width: 24px` 인 경우 다음과 같이 사용한다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```css
+.circle {
+	width: 2.4rem;
+	/* same as width: 24px; */
+}
+```
 
-### Analyzing the Bundle Size
+### theme.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- 해당 파일에 프로젝트의 color를 정의하고, 반응형 사이즈를 정의하여 개발시 다음과 같은 방법으로 적용한다.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```jsx
+const MainWrap = styled.div`
+	width: 10rem;
+	color: ${({theme})=>theme.color.white};
+	${({theme})=>theme.media.tablet`
+		width: 5rem;
+	`}
+`
+// 다음과 같은 방법으로 반응형을 구현한다.
+```

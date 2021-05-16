@@ -1,7 +1,8 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 const colors = {
-  white: "#ffffff",
+  white: '#ffffff',
+  black: '#000000',
 };
 // how to use : ${({ theme }) => theme.colors.white};
 

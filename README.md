@@ -10,7 +10,7 @@
 
 - local, dev
 
-```css
+```jsx
 yarn start
 ```
 
@@ -25,30 +25,31 @@ yarn start
 ### **Dir 구조**
 
 ```tsx
-brunch-front             
-├─ public                
-│  └─ index.html         
-├─ src                   
-│  ├─ assets // svg 파일들은 모두 assets/index.js 에 default로 선언해준다.             
-│  │  └─ index.js               
-│  ├─ components // 도메인이나 역할 분류에 따라 디렉토리 생성         
-│  │  ├─ common // 디렉토리는 lower Camel Case, 컴포넌트는 Upper Camel Case          
-│  │  │  ├─ Footer.js    
-│  │  │  └─ Header.js    
-│  │  ├─ main            
-│  │  ├─ search          
-│  │  └─ index.js        
-│  ├─ pages // 라우터 구조에 따라 생성, 하위 컴포넌트 이름은 Page라는 접미어를 붙인다.            
-│  │  ├─ Main.js         
-│  │  ├─ Search.js       
-│  │  └─ index.js        
-│  ├─ styles // style 관련된 내용             
-│  │  ├─ GlobalStyle.js  
-│  │  └─ theme.js        
-│  ├─ App.js // App.js에는 라우팅 경로를 작성한다. 로직이 되는 별도의 코드는 작성 금지           
+brunch-front
+├─ public
+│  └─ index.html
+├─ src
+│  ├─ assets // svg 파일들은 모두 assets/index.js 에 default로 선언해준다.
+│  │  └─ index.js
+│  ├─ components // 도메인이나 역할 분류에 따라 디렉토리 생성
+│  │  ├─ common // 디렉토리는 lower Camel Case, 컴포넌트는 Upper Camel Case
+│  │  │  ├─ Footer.js
+│  │  │  └─ Header.js
+│  │  ├─ main
+│  │  │  └─ ScrollSlider.js
+│  │  ├─ search
+│  │  └─ index.js
+│  ├─ pages // 라우터 구조에 따라 생성, 하위 컴포넌트 이름은 Page라는 접미어를 붙인다.
+│  │  ├─ Main.js
+│  │  ├─ Search.js
+│  │  └─ index.js
+│  ├─ styles // style 관련된 내용
+│  │  ├─ GlobalStyle.js
+│  │  └─ theme.js
+│  ├─ App.js // App.js에는 라우팅 경로를 작성한다. 로직이 되는 별도의 코드는 작성 금지
 │  └─ index.js // index.js는 Context Provider로서만 작동하도록 한다.
-├─ README.md             
-├─ package.json                
+├─ README.md
+├─ package.json
 └─ yarn.lock
 ```
 
@@ -86,8 +87,8 @@ brunch-front
 
 ```css
 .circle {
-	width: 2.4rem;
-	/* same as width: 24px; */
+  width: 2.4rem;
+  /* same as width: 24px; */
 }
 ```
 
@@ -97,12 +98,12 @@ brunch-front
 
 ```jsx
 const MainWrap = styled.div`
-	width: 10rem;
-	color: ${({theme})=>theme.color.white};
-	${({theme})=>theme.media.tablet`
-		width: 5rem;
-	`}
-`
+  width: 10rem;
+  color: ${({ theme }) => theme.color.white};
+  ${({ theme }) => theme.media.tablet`
+	    width: 5rem;
+    `}
+`;
 // 다음과 같은 방법으로 반응형을 구현한다.
 ```
 
@@ -111,19 +112,21 @@ const MainWrap = styled.div`
 1. eslint + prettier vscode extension 설치
 2. setting.json (`command + ,`) 에서 `formatOnSave: true` 체크 하거나 직접 수정
 
-    ```jsx
-    "editor.formatOnSave": true,
-    ```
+   ```jsx
+   "editor.formatOnSave": true,
+   "editor.codeActionsOnSave": {
+       "source.fixAll.eslint": true
+   },
+   ```
 
 3. 다음과 같은 플러그인 devDependency로 설치
 
-    ```jsx
-    yarn add -D eslint-config-prettier eslint-plugin-prettier prettier
-    // eslint-config-prettier : ESLint와 Prettier에 중복되는 Formatting 룰 삭제
-    // eslint-plugin-prettier : ESLint에 Prettier의 Formatting 기능 추가
-    ```
+   ```jsx
+   yarn add -D eslint-config-prettier eslint-plugin-prettier prettier
+   // eslint-config-prettier : ESLint와 Prettier에 중복되는 Formatting 룰 삭제
+   // eslint-plugin-prettier : ESLint에 Prettier의 Formatting 기능 추가
+   ```
 
 4. prettier 설정 변경시엔 개발 톡방에 이야기하고 변경할 것
 
-    [prettier 옵션 list](https://prettier.io/docs/en/options.html)
-
+   [prettier 옵션 list](https://prettier.io/docs/en/options.html)

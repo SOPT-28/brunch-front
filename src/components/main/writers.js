@@ -21,12 +21,12 @@ const Writers = () => {
           <button className="writers__category--btn">여행</button>
         </div>
         <div className="writers__cards">
-          <img src={WriterOne} className="writers__card"></img>
-          <img src={WriterTwo} className="writers__card"></img>
-          <img src={WriterThree} className="writers__card"></img>
-          <img src={WriterFour} className="writers__card"></img>
-          <img src={WriterFifth} className="writers__card"></img>
-          <img src={WriterSixth} className="writers__card"></img>
+          <img src={WriterOne} className="writers__card" />
+          <img src={WriterTwo} className="writers__card" />
+          <img src={WriterThree} className="writers__card" />
+          <img src={WriterFour} className="writers__card" />
+          <img src={WriterFifth} className="writers__card" />
+          <img src={WriterSixth} className="writers__card" />
         </div>
       </section>
     </ThirdContainer>
@@ -47,8 +47,6 @@ const ThirdContainer = styled.section`
       letter-spacing: 0.4rem;
       font-size: 1.8rem;
       margin-top: 9.3rem;
-      /* font-family: 'Noto Serif'; */
-      /* 글씨 어떻게 조정하지? */
     }
     &__sub {
       margin-top: 0.8rem;
@@ -74,13 +72,8 @@ const ThirdContainer = styled.section`
       &--btn:nth-child(1) {
         width: 8.9rem;
       }
-      /* &--btn .selected {
-        color: ${({ theme }) => theme.colors.main_blue};
-        color: #289bd1;
-      } */
 
       .selected {
-        /* color: #289bd1; */
         color: ${({ theme }) => theme.colors.main_blue};
         border: 1px solid ${({ theme }) => theme.colors.main_blue};
       }

@@ -16,18 +16,18 @@ const MainPage = () => {
     <MainWrap>
       <MainContainer>
         <FourthContainer>
-          <img className="banner" src={Banner} />
+          <img className="banner" src={Banner} alt="banner" />
           <div className="slider">
             <div className="slider__title">RECOMMENDED ARTICLES</div>
             <div className="slider__sub">브런치의 다양한 글을 만나보세요.</div>
             <div className="slider__content">
-              <img className="slider__content--img" src={SliderOne} />
-              <img className="slider__content--img" src={SliderTwo} />
-              <img className="slider__content--img" src={SliderThree} />
-              <img className="slider__content--img" src={SliderFour} />
-              <img className="slider__content--img" src={SliderFifth} />
-              <img className="slider__content--img" src={SliderSixth} />
-              <img className="slider__content--img" src={SliderSeventh} />
+              <img className="slider__content--img" src={SliderOne} alt="slider" />
+              <img className="slider__content--img" src={SliderTwo} alt="slider" />
+              <img className="slider__content--img" src={SliderThree} alt="slider" />
+              <img className="slider__content--img" src={SliderFour} alt="slider" />
+              <img className="slider__content--img" src={SliderFifth} alt="slider" />
+              <img className="slider__content--img" src={SliderSixth} alt="slider" />
+              <img className="slider__content--img" src={SliderSeventh} alt="slider" />
             </div>
           </div>
         </FourthContainer>

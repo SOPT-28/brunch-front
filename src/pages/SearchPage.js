@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/button-has-type */
 import React from 'react';
 import styled from 'styled-components';
 import { HeaderSearch, SearchSuggest } from '../assets';
@@ -47,7 +45,6 @@ const SearchWrap = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* 왜 padding을 높게 줘야, 화면이 상단에 고정될까?  */
     padding: 30rem 3rem;
     position: fixed;
     top: 0rem;
@@ -71,7 +68,6 @@ const SearchWrap = styled.div`
       img {
         top: 0.4rem;
         position: absolute;
-        /* top: 0rem; */
         right: 0.5rem;
       }
     }

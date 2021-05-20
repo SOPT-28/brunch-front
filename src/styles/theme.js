@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 const colors = {
   white: '#ffffff',
   black: '#000000',
+  main_blue: '#289BD1',
 };
 // how to use : ${({ theme }) => theme.colors.white};
 

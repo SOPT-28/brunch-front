@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../assets';
-import { ScrollSlider } from '../components';
+import { ScrollSlider, Writers } from '../components';
 
 const MainPage = () => {
   return (
     <MainWrap>
       <MainContainer>
+        <Writers />
         <FourthContainer>
           <img className="banner" src={Banner} alt="banner" />
           <ScrollSlider />
@@ -26,7 +27,7 @@ const MainWrap = styled.div`
 `;
 
 const MainContainer = styled.div`
-  width: 96rem;
+  width: 144rem;
 `;
 
 const FourthContainer = styled.div`

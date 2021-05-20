@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../assets';
-import { ScrollSlider, Writers } from '../components';
+import { ScrollSlider, Writers, Keywords } from '../components';
 
 const MainPage = () => {
   return (
     <MainWrap>
       <MainContainer>
+        <Keywords />
         <Writers />
         <FourthContainer>
           <img className="banner" src={Banner} alt="banner" />

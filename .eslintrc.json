@@ -11,7 +11,9 @@
     "react/prefer-stateless-function": ["off"],
     "react/jsx-filename-extension": ["off"],
     "react/jsx-one-expression-per-line": ["off"],
-    "react/react-in-jsx-scope": ["off"]
+    "react/react-in-jsx-scope": ["off"],
+    "react/button-has-type": ["off"],
+    "react/no-array-index-key": ["off"]
   },
   "env": {
     "browser": true // document, window 조회 가능

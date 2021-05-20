@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Circle } from '../../assets';
 
 const Footer = () => {
+  if (window.location.pathname === '/search') return null;
+
   return (
     <FooterWrap>
       <div className="footer">

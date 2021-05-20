@@ -14,3 +14,4 @@ export { default as WriterThree } from './writers_img_3.svg';
 export { default as WriterFour } from './writers_img_4.svg';
 export { default as WriterFifth } from './writers_img_5.svg';
 export { default as WriterSixth } from './writers_img_6.svg';
+export { default as NewIcon } from './new.svg';

@@ -2,11 +2,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { HeaderStart, HeaderSearch, HeaderHamburger, Logo } from '../../assets';
 
-const Header = ({ history }) => {
+const Header = () => {
+  const history = useHistory();
+
   const handleClick = () => {
     history.push('/search');
   };
@@ -59,4 +61,4 @@ const HeaderWrap = styled.div`
   }
 `;
 
-export default withRouter(Header);
+export default Header;

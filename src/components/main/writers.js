@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/button-has-type */
 import React from 'react';
-// import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   WriterOne,

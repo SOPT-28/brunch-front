@@ -15,3 +15,7 @@ export { default as WriterFour } from './writers_img_4.svg';
 export { default as WriterFifth } from './writers_img_5.svg';
 export { default as WriterSixth } from './writers_img_6.svg';
 export { default as NewIcon } from './new.svg';
+export { default as HeaderHamburger } from './header_hamburger.svg';
+export { default as HeaderSearch } from './header_search.svg';
+export { default as HeaderStart } from './header_start.svg';
+export { default as SearchSuggest } from './search_suggest.svg';

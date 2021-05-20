@@ -1,4 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/button-has-type */
 import React from 'react';
+// import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   WriterOne,
@@ -21,12 +26,12 @@ const Writers = () => {
           <button className="writers__category--btn">여행</button>
         </div>
         <div className="writers__cards">
-          <img src={WriterOne} className="writers__card" />
-          <img src={WriterTwo} className="writers__card" />
-          <img src={WriterThree} className="writers__card" />
-          <img src={WriterFour} className="writers__card" />
-          <img src={WriterFifth} className="writers__card" />
-          <img src={WriterSixth} className="writers__card" />
+          <img src={WriterOne} className="writers__card" alt="writers" />
+          <img src={WriterTwo} className="writers__card" alt="writers" />
+          <img src={WriterThree} className="writers__card" alt="writers" />
+          <img src={WriterFour} className="writers__card" alt="writers" />
+          <img src={WriterFifth} className="writers__card" alt="writers" />
+          <img src={WriterSixth} className="writers__card" alt="writers" />
         </div>
       </section>
     </ThirdContainer>

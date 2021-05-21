@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import { HeaderStart, HeaderSearch, HeaderHamburger, HeaderExit, Logo } from '../../assets';
 
 const Header = ({ history }) => {
-  const handleClick = () => {
+  const goToSearchPage = () => {
     history.push('/search');
+  };
+  const goToMainPage = () => {
+    history.push('/');
   };
 
   return (
@@ -16,11 +19,15 @@ const Header = ({ history }) => {
           <img src={Logo} alt="header" />
         </div>
         <div className="header__left">
-          {history.location.pathname === '/' && <img src={HeaderStart} alt="header" />}
           {history.location.pathname === '/' && (
-            <img src={HeaderSearch} alt="header" onClick={handleClick} />
+            <>
+              <img src={HeaderStart} alt="header" />
+              <img src={HeaderSearch} alt="header" onClick={goToSearchPage} />
+            </>
           )}
-          {history.location.pathname === '/search' && <img src={HeaderExit} alt="header" />}
+          {history.location.pathname === '/search' && (
+            <img src={HeaderExit} alt="header" onClick={goToMainPage} />
+          )}
         </div>
       </nav>
     </HeaderWrap>
@@ -36,6 +43,7 @@ const HeaderWrap = styled.div`
 
     img {
       cursor: pointer;
+      z-index: 1;
     }
 
     &__right {

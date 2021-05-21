@@ -31,7 +31,7 @@ const MainWrap = styled.div`
 `;
 
 const MainContainer = styled.div`
-  width: 144rem;
+  width: 100%;
 `;
 
 const FourthContainer = styled.div`

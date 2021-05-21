@@ -12,8 +12,8 @@ const App = () => {
           <Route exact path="/search" component={SearchPage} />
           <Route path="/">404 not Found</Route>
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </>
   );
 };

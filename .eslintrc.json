@@ -13,7 +13,7 @@
     "react/jsx-one-expression-per-line": ["off"],
     "react/react-in-jsx-scope": ["off"],
     "react/button-has-type": ["off"],
-    "react/no-array-index-key": ["off"]
+    "react/no-array-index-key": ["off"],
     "no-unused-vars": ["off"],
     "react/prop-types": ["off"],
     "jsx-a11y/no-noninteractive-element-interactions": ["off"],

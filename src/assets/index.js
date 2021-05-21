@@ -1,6 +1,7 @@
 export { default as Logo } from './logo.svg';
 export { default as Circle } from './circle.svg';
 export { default as Banner } from './banner.svg';
+export { default as Pop } from './pop.svg';
 export { default as SliderOne } from './slider_img_1.svg';
 export { default as SliderTwo } from './slider_img_2.svg';
 export { default as SliderThree } from './slider_img_3.svg';

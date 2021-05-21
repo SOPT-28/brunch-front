@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../assets';
-import { ScrollSlider, Writers, Keywords } from '../components';
+import { Header, ScrollSlider, Writers, Keywords, Popup, Title } from '../components';
 
 const MainPage = () => {
   return (
     <MainWrap>
       <MainContainer>
+        <Popup />
+        <Header />
+        <Title />
         <Keywords />
         <Writers />
         <FourthContainer>

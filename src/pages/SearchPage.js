@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { HeaderSearch, SearchSuggest } from '../assets';
+import { Header } from '../components';
 
 const SearchPage = () => {
   return (
     <SearchWrap>
+      <Header />
       <div className="search">
         <div className="search__input--box">
           <input type="text" className="" placeholder="검색어를 입력해 주세요." />

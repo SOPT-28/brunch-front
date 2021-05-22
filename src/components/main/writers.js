@@ -41,7 +41,6 @@ const ThirdContainer = styled.section`
     width: 100%;
     height: 113.5rem;
     background-color: #fafafa;
-    padding: 0 20rem;
 
     &__title {
       letter-spacing: 0.4rem;
@@ -80,13 +79,11 @@ const ThirdContainer = styled.section`
     }
 
     &__cards {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-    }
-    &__card {
-      margin: 0.75rem 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 24rem);
+      grid-template-rows: repeat(2, 38rem);
+      column-gap: 1rem;
+      row-gap: 0.75rem;
     }
   }
 `;

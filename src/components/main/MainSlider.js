@@ -39,7 +39,6 @@ const MainSlider = () => {
     }
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
     slideRef.current.style.transform = `translateX(-${slide}px)`;
-    // leftRef.current.style.left = `-20rem`;
   }, [currentSlide]);
   return (
     <MainSliderWrapper>
@@ -59,14 +58,14 @@ const MainSlider = () => {
           <div className="main-slider__content" ref={slideRef}>
             <img src={MainSliderOne} alt="" />
           </div>
-          <div className="main-slider__content double-img">
+          <div className="main-slider__content--double-img">
             <img src={MainSliderTwo} alt="" />
             <img src={MainSliderThree} alt="" />
           </div>
           <div className="main-slider__content">
             <img src={MainSliderFour} alt="" />
           </div>
-          <div className="main-slider__content double-img">
+          <div className="main-slider__content--double-img">
             <img src={MainSliderFifth} alt="" />
             <img src={MainSliderSixth} alt="" />
           </div>
@@ -133,7 +132,7 @@ const MainSliderWrapper = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* margin-left: 24rem; */
+
     margin-bottom: 2.8rem;
     &__container {
       display: flex;
@@ -157,7 +156,6 @@ const MainSliderWrapper = styled.div`
     justify-content: space-between;
     margin: auto;
     margin-bottom: 15.4rem;
-    /* width: 50%; */
   }
   .btn__circle {
     cursor: pointer;

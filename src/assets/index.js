@@ -27,3 +27,4 @@ export { default as MainSliderFifth } from './main_slider_img_5.svg';
 export { default as MainSliderSixth } from './main_slider_img_6.svg';
 export { default as MainSliderSeventh } from './main_slider_img_7.svg';
 export { default as NextArrow } from './next_arrow.svg';
+export { default as LeftArrow } from './prev_arrow.svg';

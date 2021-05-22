@@ -9,19 +9,37 @@ import {
   MainSliderSixth,
   MainSliderSeventh,
   NextArrow,
+  LeftArrow,
 } from '../../assets';
 
 const MainSlider = () => {
   const slideRef = React.useRef();
+  const mainRef = React.useRef();
+  const leftRef = React.useRef();
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const slideHandler = () => {
     if (currentSlide >= 4) setCurrentSlide(0);
     else setCurrentSlide(currentSlide + 1);
   };
+  const slideLeftHandler = () => {
+    if (currentSlide < 0) setCurrentSlide(4);
+    else setCurrentSlide(currentSlide - 1);
+  };
   useEffect(() => {
     const slide = currentSlide * 470;
+    if (currentSlide > 0) {
+      mainRef.current.style.marginLeft = '0';
+      mainRef.current.style.width = '144rem';
+      leftRef.current.style.display = 'block';
+    }
+    if (currentSlide === 0) {
+      mainRef.current.style.marginLeft = '24rem';
+      mainRef.current.style.width = '120rem';
+      leftRef.current.style.display = 'none';
+    }
     slideRef.current.style.transition = 'all 0.5s ease-in-out';
     slideRef.current.style.transform = `translateX(-${slide}px)`;
+    // leftRef.current.style.left = `-20rem`;
   }, [currentSlide]);
   return (
     <MainSliderWrapper>
@@ -29,7 +47,14 @@ const MainSlider = () => {
         <span className="notice__title">Notice</span>
         <span className="notice__content">3월 업데이트 및 소셜 로그인 종료 사전 안내</span>
       </div>
-      <div className="main-slider">
+      <div className="main-slider" ref={mainRef}>
+        <img
+          className="left-icon"
+          src={LeftArrow}
+          alt=""
+          onClick={slideLeftHandler}
+          ref={leftRef}
+        />
         <div className="main-slider__container" ref={slideRef}>
           <div className="main-slider__content" ref={slideRef}>
             <img src={MainSliderOne} alt="" />
@@ -50,28 +75,33 @@ const MainSlider = () => {
           </div>
         </div>
         <img className="next-icon" src={NextArrow} alt="" onClick={slideHandler} />
-        <div className="btn">
-          <div
-            className="btn__circle"
-            style={currentSlide === 0 ? { backgroundColor: '#289bd1' } : {}}
-          ></div>
-          <div
-            className="btn__circle"
-            style={currentSlide === 1 ? { backgroundColor: '#289bd1' } : {}}
-          ></div>
-          <div
-            className="btn__circle"
-            style={currentSlide === 2 ? { backgroundColor: '#289bd1' } : {}}
-          ></div>
-          <div
-            className="btn__circle"
-            style={currentSlide === 3 ? { backgroundColor: '#289bd1' } : {}}
-          ></div>
-          <div
-            className="btn__circle"
-            style={currentSlide === 4 ? { backgroundColor: '#289bd1' } : {}}
-          ></div>
-        </div>
+      </div>
+      <div className="btn">
+        <div
+          className="btn__circle"
+          style={currentSlide === 0 ? { backgroundColor: '#289bd1' } : {}}
+          onClick={() => setCurrentSlide(0)}
+        ></div>
+        <div
+          className="btn__circle"
+          style={currentSlide === 1 ? { backgroundColor: '#289bd1' } : {}}
+          onClick={() => setCurrentSlide(1)}
+        ></div>
+        <div
+          className="btn__circle"
+          style={currentSlide === 2 ? { backgroundColor: '#289bd1' } : {}}
+          onClick={() => setCurrentSlide(2)}
+        ></div>
+        <div
+          className="btn__circle"
+          style={currentSlide === 3 ? { backgroundColor: '#289bd1' } : {}}
+          onClick={() => setCurrentSlide(3)}
+        ></div>
+        <div
+          className="btn__circle"
+          style={currentSlide === 4 ? { backgroundColor: '#289bd1' } : {}}
+          onClick={() => setCurrentSlide(4)}
+        ></div>
       </div>
     </MainSliderWrapper>
   );
@@ -103,18 +133,20 @@ const MainSliderWrapper = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    margin-left: 24rem;
-    margin-bottom: 15.4rem;
+    /* margin-left: 24rem; */
+    margin-bottom: 2.8rem;
     &__container {
       display: flex;
       width: 120rem;
       height: 52rem;
-
-      margin-bottom: 2.8rem;
     }
     &__content {
       width: 47rem;
       height: 52rem;
+      &--double-img {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 
@@ -123,8 +155,12 @@ const MainSliderWrapper = styled.div`
     display: flex;
     height: 2rem;
     justify-content: space-between;
+    margin: auto;
+    margin-bottom: 15.4rem;
+    /* width: 50%; */
   }
   .btn__circle {
+    cursor: pointer;
     width: 1.6rem;
     height: 1.6rem;
     border-radius: 50%;
@@ -135,5 +171,13 @@ const MainSliderWrapper = styled.div`
     position: absolute;
     top: 16rem;
     right: 3rem;
+  }
+  .left-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 16rem;
+    left: 10rem;
+    z-index: 1;
+    display: none;
   }
 `;

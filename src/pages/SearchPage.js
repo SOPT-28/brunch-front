@@ -12,22 +12,23 @@ const SearchPage = () => {
           <input type="text" className="" placeholder="검색어를 입력해 주세요." />
           <img src={HeaderSearch} alt="input" />
         </div>
+        <div className="animation_up">
+          <p className="search__desc">
+            <b>그림</b> 그리는 사람들
+          </p>
 
-        <p className="search__desc">
-          <b>그림</b> 그리는 사람들
-        </p>
-
-        <div className="writers__category">
-          <button className="writers__category--btn selected">반려동물</button>
-          <button className="writers__category--btn selected">크리에이터</button>
-          <button className="writers__category--btn selected">디자이너</button>
-        </div>
-        <div className="search__suggest">
-          <img src={SearchSuggest} alt="suggest" />
-          <img src={SearchSuggest} alt="suggest" />
-          <img src={SearchSuggest} alt="suggest" />
-          <img src={SearchSuggest} alt="suggest" />
-          <img src={SearchSuggest} alt="suggest" />
+          <div className="writers__category">
+            <button className="writers__category--btn selected">반려동물</button>
+            <button className="writers__category--btn selected">크리에이터</button>
+            <button className="writers__category--btn selected">디자이너</button>
+          </div>
+          <div className="search__suggest">
+            <img src={SearchSuggest} alt="suggest" />
+            <img src={SearchSuggest} alt="suggest" />
+            <img src={SearchSuggest} alt="suggest" />
+            <img src={SearchSuggest} alt="suggest" />
+            <img src={SearchSuggest} alt="suggest" />
+          </div>
         </div>
       </div>
     </SearchWrap>
@@ -73,7 +74,22 @@ const SearchWrap = styled.div`
         right: 0.5rem;
       }
     }
-
+    .animation_up {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: animationup 0.5s;
+    }
+    @keyframes animationup {
+      from {
+        opacity: 0;
+        transform: translate(0, 30px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
     .search__desc {
       font-size: 2.8rem;
       margin-top: 6.8rem;

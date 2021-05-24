@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../assets';
-import { Header, ScrollSlider, Writers, Keywords, Popup, Title } from '../components';
+import { Header, ScrollSlider, Writers, Keywords, Popup, Title, MainSlider } from '../components';
 
 const MainPage = () => {
   return (
@@ -10,6 +10,7 @@ const MainPage = () => {
         <Popup />
         <Header />
         <Title />
+        <MainSlider />
         <Keywords />
         <Writers />
         <FourthContainer>

@@ -5,3 +5,4 @@ export { default as Popup } from './main/Popup';
 export { default as ScrollSlider } from './main/ScrollSlider';
 export { default as Writers } from './main/Writers';
 export { default as Keywords } from './main/Keywords';
+export { default as MainSlider } from './main/MainSlider';

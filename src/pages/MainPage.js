@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../assets';
-import { ScrollSlider, Writers, Keywords, MainSlider } from '../components';
+import { Header, ScrollSlider, Writers, Keywords, Popup, Title, MainSlider } from '../components';
 
 const MainPage = () => {
   return (
     <MainWrap>
       <MainContainer>
+        <Popup />
+        <Header />
+        <Title />
         <MainSlider />
         <Keywords />
         <Writers />
@@ -29,7 +32,7 @@ const MainWrap = styled.div`
 `;
 
 const MainContainer = styled.div`
-  width: 144rem;
+  width: 100%;
 `;
 
 const FourthContainer = styled.div`

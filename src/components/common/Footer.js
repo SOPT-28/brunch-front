@@ -1,12 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { Circle } from '../../assets';
 
-const Footer = () => {
-  if (window.location.pathname === '/search') return null;
-
+const Footer = ({ history }) => {
+  if (history.location.pathname === '/search') return null;
   return (
-    <FooterWrap>
+    <FooterWrap history={history}>
       <div className="footer">
         <div className="footer__col--first">
           <img src={Circle} alt="circle" />
@@ -43,9 +43,11 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default withRouter(Footer);
 
 const FooterWrap = styled.div`
+  /* display: ${props => (props.history.location.pathname === '/search' ? 'none' : 'flex')} */
+  opacity: ${props => (props.history.location.pathname === '/search' ? '0' : '1')};
   display: flex;
   justify-content: center;
   width: 100%;

@@ -69,12 +69,13 @@ const FooterWrap = styled.div`
         .desc {
           color: #f2f2f2;
           font-size: 1.6rem;
-          font-family: 'Noto-serif';
+          font-family: 'Noto Serif KR', serif;
         }
         .author {
           color: #828282;
           margin-top: 0.5rem;
           font-size: 1.3rem;
+          font-family: 'Noto Serif KR', serif;
         }
       }
       &--second {

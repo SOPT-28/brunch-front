@@ -27,6 +27,7 @@ const TitleWrap = styled.div`
     width: 100%;
     padding: 0 20rem;
     letter-spacing: -0.1rem;
+    font-family: 'Nanum Myeongjo', serif;
     &__col {
       &--first {
         display: flex;

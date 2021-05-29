@@ -46,6 +46,7 @@ const ThirdContainer = styled.section`
       letter-spacing: 0.4rem;
       font-size: 1.8rem;
       margin-top: 9.3rem;
+      font-family: 'Noto Serif KR', serif;
     }
     &__sub {
       margin-top: 0.8rem;

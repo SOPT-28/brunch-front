@@ -67,6 +67,7 @@ const KeywordsWrapper = styled.div`
       text-shadow: 0rem 4rem 4rem rgba(0, 0, 0, 0.25);
       letter-spacing: 0.4em;
       margin-bottom: 0.8rem;
+      font-family: 'Noto Serif KR', serif;
     }
     &__sub {
       font-weight: 400;

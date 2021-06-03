@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Banner } from '../assets';
-import { Header, ScrollSlider, Writers, Keywords, Popup, Title, MainSlider } from '../components';
+import { Header, Articles, Writers, Keywords, Popup, Title, MainSlider } from '../components';
 
 const MainPage = () => {
   return (
@@ -15,7 +15,7 @@ const MainPage = () => {
         <Writers />
         <FourthContainer>
           <img className="banner" src={Banner} alt="banner" />
-          <ScrollSlider />
+          <Articles />
         </FourthContainer>
       </MainContainer>
     </MainWrap>

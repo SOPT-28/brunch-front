@@ -4,6 +4,8 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   main_blue: '#289BD1',
+  gray_3: '#828282',
+  gray_4: '#BDBDBD',
 };
 // how to use : ${({ theme }) => theme.colors.white};
 

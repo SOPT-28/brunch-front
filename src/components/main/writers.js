@@ -1,32 +1,69 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import {
-  WriterOne,
-  WriterTwo,
-  WriterThree,
-  WriterFour,
-  WriterFifth,
-  WriterSixth,
-} from '../../assets';
+import client from '../../lib/api/client';
+import Writer from './Writer';
 
 const Writers = () => {
+  const [allWriters, setAllWriters] = useState(null);
+  const [writers, setWriters] = useState(null);
+
+  const petRef = useRef();
+  const createRef = useRef();
+  const journeyRef = useRef();
+
+  const getWriters = async () => {
+    const { data } = await client.get('/api/Writers');
+    return data;
+  };
+  useEffect(async () => {
+    const { data } = await getWriters();
+    setAllWriters(data);
+    setWriters(data.writer[0].pet);
+  }, []);
+
+  const filterTag = event => {
+    switch (event.target.innerText) {
+      case '반려동물':
+        setWriters(allWriters.writer[0].pet);
+        petRef.current.classList.add('selected');
+        createRef.current.classList.remove('selected');
+        journeyRef.current.classList.remove('selected');
+        break;
+      case '창작':
+        setWriters(allWriters.writer[0].create);
+        petRef.current.classList.remove('selected');
+        createRef.current.classList.add('selected');
+        journeyRef.current.classList.remove('selected');
+        break;
+      case '여행':
+        setWriters(allWriters.writer[0].journey);
+        petRef.current.classList.remove('selected');
+        createRef.current.classList.remove('selected');
+        journeyRef.current.classList.add('selected');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <ThirdContainer>
       <section className="writers">
         <p className="writers__title">BRUNCH WRITERS</p>
         <p className="writers__sub">브런치 추천 작가</p>
         <div className="writers__category">
-          <button className="writers__category--btn selected">반려동물</button>
-          <button className="writers__category--btn">창작</button>
-          <button className="writers__category--btn">여행</button>
+          <button className="writers__category--btn selected" ref={petRef} onClick={filterTag}>
+            반려동물
+          </button>
+          <button className="writers__category--btn" ref={createRef} onClick={filterTag}>
+            창작
+          </button>
+          <button className="writers__category--btn" ref={journeyRef} onClick={filterTag}>
+            여행
+          </button>
         </div>
         <div className="writers__cards">
-          <img src={WriterOne} className="writers__card" alt="writers" />
-          <img src={WriterTwo} className="writers__card" alt="writers" />
-          <img src={WriterThree} className="writers__card" alt="writers" />
-          <img src={WriterFour} className="writers__card" alt="writers" />
-          <img src={WriterFifth} className="writers__card" alt="writers" />
-          <img src={WriterSixth} className="writers__card" alt="writers" />
+          {writers && writers.map(writer => <Writer writerData={writer} />)}
         </div>
       </section>
     </ThirdContainer>
@@ -68,6 +105,7 @@ const ThirdContainer = styled.section`
         font-size: 1.5rem;
         color: #bdbdbd;
         margin: 0 0.3rem;
+        background-color: ${({ theme }) => theme.colors.white};
       }
       &--btn:nth-child(1) {
         width: 8.9rem;
@@ -81,10 +119,9 @@ const ThirdContainer = styled.section`
 
     &__cards {
       display: grid;
-      grid-template-columns: repeat(3, 24rem);
+      grid-template-columns: repeat(3, 30.7rem);
       grid-template-rows: repeat(2, 38rem);
-      column-gap: 1rem;
-      row-gap: 0.75rem;
+      gap: 0.75rem 1rem;
     }
   }
 `;

@@ -32,6 +32,10 @@ const WriterWrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.white};
     cursor: pointer;
 
+    ${({ theme }) => theme.media.tablet`
+      width: 24rem;
+    `}
+
     &__img {
       width: 8rem;
       height: 8rem;

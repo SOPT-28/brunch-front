@@ -122,6 +122,10 @@ const ThirdContainer = styled.section`
       grid-template-columns: repeat(3, 30.7rem);
       grid-template-rows: repeat(2, 38rem);
       gap: 0.75rem 1rem;
+
+      ${({ theme }) => theme.media.tablet`
+      grid-template-columns: repeat(3, 24rem);
+    `}
     }
   }
 `;

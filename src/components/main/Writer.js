@@ -11,8 +11,10 @@ const Writer = ({ writerData }) => {
         <span className="writer__job">{writerJob}</span>
         <span className="writer__desc">{description}</span>
         <span className="writer__tags">
-          {Object.keys(tags[0]).map(tag => (
-            <span className="writer__tag">{tags[0][tag]}</span>
+          {Object.keys(tags[0]).map((tag, index) => (
+            <span key={index} className="writer__tag">
+              {tags[0][tag]}
+            </span>
           ))}
         </span>
       </div>

@@ -63,7 +63,7 @@ const Writers = () => {
           </button>
         </div>
         <div className="writers__cards">
-          {writers && writers.map(writer => <Writer writerData={writer} />)}
+          {writers && writers.map((writer, index) => <Writer key={index} writerData={writer} />)}
         </div>
       </section>
     </ThirdContainer>

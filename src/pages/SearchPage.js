@@ -1,35 +1,80 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { HeaderSearch, SearchSuggest } from '../assets';
 import { Header } from '../components';
+import client from '../lib/api/client';
 
 const SearchPage = () => {
+  const [search, setSearch] = useState();
+  const inputRef = useRef();
+
+  const searchWord = async word => {
+    try {
+      const { data } = await client.post(`/api/search`, {
+        searchWord: word,
+      });
+      return data.data;
+    } catch (err) {
+      console.log('[FAIL] 작가 검색 실패');
+      return null;
+    }
+  };
+
+  const handleSearch = async event => {
+    event.preventDefault();
+    const data = await searchWord(inputRef.current.value);
+    if (data !== null) {
+      setSearch(data.searchArticle);
+    } else {
+      setSearch({ msg: '검색 결과가 없습니다.' });
+    }
+  };
+
   return (
     <SearchWrap>
       <Header />
       <div className="search">
-        <div className="search__input--box">
-          <input type="text" className="" placeholder="검색어를 입력해 주세요." />
+        <form className="search__input--box" onSubmit={handleSearch}>
+          <input ref={inputRef} type="text" className="" placeholder="검색어를 입력해 주세요." />
           <img src={HeaderSearch} alt="input" />
-        </div>
-        <div className="animation_up">
-          <p className="search__desc">
-            <b>그림</b> 그리는 사람들
-          </p>
+        </form>
+        {!search && (
+          <div className="animation_up">
+            <p className="search__desc">
+              <b>그림</b> 그리는 사람들
+            </p>
 
-          <div className="writers__category">
-            <button className="writers__category--btn selected">반려동물</button>
-            <button className="writers__category--btn selected">크리에이터</button>
-            <button className="writers__category--btn selected">디자이너</button>
+            <div className="writers__category">
+              <button className="writers__category--btn selected">반려동물</button>
+              <button className="writers__category--btn selected">크리에이터</button>
+              <button className="writers__category--btn selected">디자이너</button>
+            </div>
+
+            <div className="search__suggest">
+              <img src={SearchSuggest} alt="suggest" />
+              <img src={SearchSuggest} alt="suggest" />
+              <img src={SearchSuggest} alt="suggest" />
+              <img src={SearchSuggest} alt="suggest" />
+              <img src={SearchSuggest} alt="suggest" />
+            </div>
           </div>
-          <div className="search__suggest">
-            <img src={SearchSuggest} alt="suggest" />
-            <img src={SearchSuggest} alt="suggest" />
-            <img src={SearchSuggest} alt="suggest" />
-            <img src={SearchSuggest} alt="suggest" />
-            <img src={SearchSuggest} alt="suggest" />
-          </div>
-        </div>
+        )}
+        {search &&
+          (search.msg ? (
+            <div className="errorMsg">{search.msg}</div>
+          ) : (
+            <div className="article">
+              <div className="article__metadata">
+                <h2 className="article__metadata__title">{search.title}</h2>
+                <p className="article__metadata__description">{search.discription}</p>
+                <p className="article__metadata__writer">
+                  <span className="article__metadata__by">By</span> {search.writtenBy}
+                </p>
+              </div>
+              <img className="article__img" src={search.articleImg} alt="article" />
+            </div>
+          ))}
       </div>
     </SearchWrap>
   );
@@ -59,7 +104,6 @@ const SearchWrap = styled.div`
     &__input--box {
       width: 100%;
       position: relative;
-      max-width: 93.6;
       max-width: 93.6rem;
       input {
         font-size: 2.8rem;
@@ -130,5 +174,59 @@ const SearchWrap = styled.div`
         cursor: pointer;
       }
     }
+  }
+  .article {
+    margin-top: 4rem;
+    padding-left: 2rem;
+    max-width: 93.6rem;
+    background-color: #fbfbfb;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &__metadata {
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        font-size: 2rem;
+        margin-top: 2rem;
+        color: #333333;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &__description {
+        font-size: 1.4rem;
+        line-height: 2.1rem;
+        margin-top: 2rem;
+        color: #666666;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      &__writer {
+        font-size: 1.2rem;
+        margin: 2rem 0;
+        color: #959595;
+      }
+      &__by {
+        margin-right: 0.4rem;
+        font-family: sans-serif;
+        font-style: italic;
+        color: #959595;
+      }
+    }
+
+    &__img {
+      width: 12rem;
+      height: 12rem;
+      margin-left: 2.5rem;
+    }
+  }
+  .errorMsg {
+    margin-top: 5rem;
+    font-size: 3rem;
   }
 `;

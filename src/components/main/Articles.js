@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import client from '../../lib/api/client';
+import { writersName } from '../../states.js';
 
 const Articles = () => {
   const [articles, setArticles] = useState(null);
+  const setWritersName = useSetRecoilState(writersName);
+
   const getArticle = async () => {
     const { data } = await client.get('/api/articles');
     return data;
@@ -12,6 +16,10 @@ const Articles = () => {
   useEffect(async () => {
     const { data } = await getArticle();
     setArticles(data.articles);
+
+    const AllWriters = [];
+    data.articles.map(article => AllWriters.push(article.writtenBy));
+    setWritersName(AllWriters);
   }, []);
 
   if (!articles) {

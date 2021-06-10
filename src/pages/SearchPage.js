@@ -1,12 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { HeaderSearch, SearchSuggest } from '../assets';
 import { Header } from '../components';
 import client from '../lib/api/client';
+import { writersName } from '../states.js';
 
 const SearchPage = () => {
   const [search, setSearch] = useState();
+  const AllwritersName = useRecoilValue(writersName);
+  const [autocompleted, setAutocompleted] = useState([]);
   const inputRef = useRef();
 
   const searchWord = async word => {
@@ -21,24 +25,57 @@ const SearchPage = () => {
     }
   };
 
+  const handleChange = event => {
+    const input = event.target.value;
+    if (!input) {
+      setAutocompleted([]);
+      return;
+    }
+    // const autocomplete = AllwritersName.filter(writer => writer.includes(input));
+    const autocomplete = AllwritersName.filter(writer => writer.match(new RegExp(input, 'i')));
+    // 대소문자를 구분하지 않는다 - match / cf. includes
+    setAutocompleted(autocomplete);
+  };
+
   const handleSearch = async event => {
     event.preventDefault();
     const data = await searchWord(inputRef.current.value);
     if (data !== null) {
       setSearch(data.searchArticle);
+      setAutocompleted([]);
     } else {
       setSearch({ msg: '검색 결과가 없습니다.' });
     }
   };
 
+  const handleClick = async event => {
+    const data = await searchWord(event.target.innerText);
+    setSearch(data.searchArticle);
+    setAutocompleted([]);
+    inputRef.current.value = event.target.innerText;
+  };
   return (
     <SearchWrap>
       <Header />
       <div className="search">
-        <form className="search__input--box" onSubmit={handleSearch}>
-          <input ref={inputRef} type="text" className="" placeholder="검색어를 입력해 주세요." />
-          <img src={HeaderSearch} alt="input" />
-        </form>
+        <div className="search__container">
+          <form className="search__input--box" onSubmit={handleSearch}>
+            <input
+              ref={inputRef}
+              type="text"
+              className=""
+              placeholder="검색어를 입력해 주세요."
+              onChange={handleChange}
+            />
+            <img src={HeaderSearch} alt="input" />
+          </form>
+          {autocompleted &&
+            autocompleted.map((writer, index) => (
+              <div key={index} className="search__container--auto" onClick={handleClick}>
+                {writer}
+              </div>
+            ))}
+        </div>
         {!search && (
           <div className="animation_up">
             <p className="search__desc">
@@ -100,6 +137,22 @@ const SearchWrap = styled.div`
 
     width: 100%;
     height: 100%;
+
+    &__container {
+      width: 100%;
+
+      &--auto {
+        background-color: #959595;
+        color: white;
+        height: 3rem;
+        max-width: 93.6rem;
+        margin: 0.8rem 0;
+        padding-left: 1rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
 
     &__input--box {
       width: 100%;

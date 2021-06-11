@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import client from '../../lib/api/client';
-import Writer from './Writer';
+import { Writer } from '../';
 
 const Writers = () => {
   const [allWriters, setAllWriters] = useState(null);

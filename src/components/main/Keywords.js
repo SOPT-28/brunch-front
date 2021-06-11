@@ -1,53 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { NewIcon } from '../../assets';
+import client from '../../lib/api/client';
 
-const keywords = [
-  '지구한바퀴 세계여행',
-  '그림·웹툰',
-  '시사·이슈',
-  'IT 트렌드',
-  '사진·촬영',
-  '취향 저격 영화리뷰',
-  '오늘은 이런 책',
-  '지구한바퀴 세계여행',
-  '글쓰기 코치',
-  '직장인 현실 조언',
-  '스타트업 경험담',
-  '육아 이야기',
-  '요리·레시피',
-  '건강·운동',
-  '멘탈관리 심리탐구',
-  '디자인 스토리',
-  '문화·예술',
-  '건축·설계',
-  '인문학·철학',
-  '쉽게 읽는 역사',
-  '우리집 반려동물',
-  '멋진 켈리그래피',
-  '사랑·이별',
-  '감성 에세이',
-];
-const newDisplay = [2, 6, 10, 23];
 const Keywords = () => {
+  const [keywords, setKeywords] = useState(null);
+  const getKeywords = async () => {
+    try {
+      const { data } = await client.get('/api/keywords');
+      return data;
+    } catch (err) {
+      throw err;
+    }
+  };
+  useEffect(async () => {
+    const { data } = await getKeywords();
+    setKeywords(data.keywords);
+  }, []);
   return (
     <KeywordsWrapper>
       <div className="keywords">
         <h2 className="keywords__title">BRUNCH KEYWORD</h2>
         <h4 className="keywords__sub">키워드로 분류된 다양한 글 모음</h4>
-        <div className="keywords__content">
-          {keywords.map((keyword, index) => (
-            <div key={index} className="keywords__content__item">
-              <div className="keywords__content__item__title">{keyword}</div>
-              <img
-                className="keywords__content__item--newIcon"
-                style={newDisplay.includes(index) ? {} : { display: 'none' }}
-                src={NewIcon}
-                alt=""
-              />
-            </div>
-          ))}
-        </div>
+        {keywords && (
+          <div className="keywords__content">
+            {keywords.map((keyword, index) => (
+              <div key={index} className="keywords__content__item">
+                <div className="keywords__content__item__title">{keyword.keyword}</div>
+                <img
+                  className="keywords__content__item--newIcon"
+                  style={keyword.new ? {} : { display: 'none' }}
+                  src={NewIcon}
+                  alt=""
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </KeywordsWrapper>
   );

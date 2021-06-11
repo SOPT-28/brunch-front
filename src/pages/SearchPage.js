@@ -20,8 +20,8 @@ const SearchPage = () => {
       });
       return data.data;
     } catch (err) {
-      console.log('[FAIL] 작가 검색 실패');
-      return null;
+      console.error('[FAIL] 작가 검색 실패');
+      throw err;
     }
   };
 
@@ -139,7 +139,7 @@ const SearchWrap = styled.div`
     height: 100%;
 
     &__container {
-      width: 100%;
+      width: 93.6rem;
 
       &--auto {
         background-color: #959595;

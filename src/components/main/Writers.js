@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import client from '../../lib/api/client';
-import { Writer } from '../';
+import { Writer } from '..';
 
 const Writers = () => {
   const [allWriters, setAllWriters] = useState(null);
@@ -70,6 +70,8 @@ const Writers = () => {
   );
 };
 
+export default Writers;
+
 const ThirdContainer = styled.section`
   .writers {
     display: flex;
@@ -129,5 +131,3 @@ const ThirdContainer = styled.section`
     }
   }
 `;
-
-export default Writers;

@@ -10,6 +10,7 @@ const Keywords = () => {
       const { data } = await client.get('/api/keywords');
       return data;
     } catch (err) {
+      console.error(err);
       throw err;
     }
   };
@@ -17,6 +18,9 @@ const Keywords = () => {
     const { data } = await getKeywords();
     setKeywords(data.keywords);
   }, []);
+
+  if (!keywords) <div>Loading...</div>;
+
   return (
     <KeywordsWrapper>
       <div className="keywords">

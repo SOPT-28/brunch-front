@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import client from '../../lib/api/client';
-import Writer from './Writer';
+import { Writer } from '../';
 
 const Writers = () => {
   const [allWriters, setAllWriters] = useState(null);
@@ -63,7 +63,7 @@ const Writers = () => {
           </button>
         </div>
         <div className="writers__cards">
-          {writers && writers.map(writer => <Writer writerData={writer} />)}
+          {writers && writers.map((writer, index) => <Writer key={index} writerData={writer} />)}
         </div>
       </section>
     </ThirdContainer>
@@ -122,6 +122,10 @@ const ThirdContainer = styled.section`
       grid-template-columns: repeat(3, 30.7rem);
       grid-template-rows: repeat(2, 38rem);
       gap: 0.75rem 1rem;
+
+      ${({ theme }) => theme.media.tablet`
+      grid-template-columns: repeat(3, 24rem);
+    `}
     }
   }
 `;

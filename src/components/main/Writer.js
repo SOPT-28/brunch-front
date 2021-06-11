@@ -11,8 +11,10 @@ const Writer = ({ writerData }) => {
         <span className="writer__job">{writerJob}</span>
         <span className="writer__desc">{description}</span>
         <span className="writer__tags">
-          {Object.keys(tags[0]).map(tag => (
-            <span className="writer__tag">{tags[0][tag]}</span>
+          {Object.keys(tags[0]).map((tag, index) => (
+            <span key={index} className="writer__tag">
+              {tags[0][tag]}
+            </span>
           ))}
         </span>
       </div>
@@ -31,6 +33,10 @@ const WriterWrapper = styled.div`
     height: 38rem;
     background-color: ${({ theme }) => theme.colors.white};
     cursor: pointer;
+
+    ${({ theme }) => theme.media.tablet`
+      width: 24rem;
+    `}
 
     &__img {
       width: 8rem;

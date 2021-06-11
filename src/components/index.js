@@ -6,3 +6,4 @@ export { default as Articles } from './main/Articles';
 export { default as Writers } from './main/Writers';
 export { default as Keywords } from './main/Keywords';
 export { default as MainSlider } from './main/MainSlider';
+export { default as Writer } from './main/Writer';

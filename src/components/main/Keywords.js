@@ -6,12 +6,15 @@ import client from '../../lib/api/client';
 const Keywords = () => {
   const [keywords, setKeywords] = useState(null);
   const getKeywords = async () => {
-    const { data } = await client.get('/api/keywords');
-    return data;
+    try {
+      const { data } = await client.get('/api/keywords');
+      return data;
+    } catch (err) {
+      throw err;
+    }
   };
   useEffect(async () => {
     const { data } = await getKeywords();
-    console.log(data);
     setKeywords(data.keywords);
   }, []);
   return (
